@@ -33,7 +33,7 @@ def get_endpoint(locale, workspace, token, webservice, name):
         if req.ok:
             return res
         else:
-            print("FAILURE {}: {} - {}".format(req.status_code, res["error"]["code"], res["error"]["message"]))
+            print(("FAILURE {}: {} - {}".format(req.status_code, res["error"]["code"], res["error"]["message"])))
             raise requests.HTTPError(req.status_code)
     except requests.RequestException as error:
         print(error)
@@ -56,7 +56,7 @@ def get_endpoints(locale, workspace, token, webservice):
         if req.ok:
             return res
         else:
-            print("FAILURE {}: {} - {}".format(req.status_code, res["error"]["code"], res["error"]["message"]))
+            print(("FAILURE {}: {} - {}".format(req.status_code, res["error"]["code"], res["error"]["message"])))
             raise requests.HTTPError(req.status_code)
     except requests.RequestException as error:
         print(error)
@@ -98,11 +98,11 @@ def create_endpoint(locale, workspace, token, webservice, name, desc, tlvl=None)
     try:
         req = requests.put(url=url, data=json.dumps(data), headers=headers)
         if req.ok:
-            print("CREATED ENDPOINT '{}': {}".format(name, req.status_code))
+            print(("CREATED ENDPOINT '{}': {}".format(name, req.status_code)))
             return True
         else:
             res = json.loads(req.text)
-            print("FAILURE {}: {} - {}".format(req.status_code, res["error"]["code"], res["error"]["message"]))
+            print(("FAILURE {}: {} - {}".format(req.status_code, res["error"]["code"], res["error"]["message"])))
             raise requests.HTTPError(req.status_code)
     except requests.RequestException as error:
         print(error)
@@ -128,11 +128,11 @@ def delete_endpoint(locale, workspace, token, webservice, name):
     try:
         req = requests.delete(url=url, headers=headers)
         if req.ok:
-            print("DELETED ENDPOINT '{}': {}".format(name, req.status_code))
+            print(("DELETED ENDPOINT '{}': {}".format(name, req.status_code)))
             return True
         else:
             res = json.loads(req.text)
-            print("FAILURE {}: {} - {}".format(req.status_code, res["error"]["code"], res["error"]["message"]))
+            print(("FAILURE {}: {} - {}".format(req.status_code, res["error"]["code"], res["error"]["message"])))
             raise requests.HTTPError(req.status_code)
     except requests.RequestException as error:
         print(error)
@@ -173,11 +173,11 @@ def update_endpoint(locale, workspace, token, webservice, endpoint_name, model_n
     try:
         req = requests.patch(url=url, data=json.dumps(data), headers=headers)
         if req.ok:
-            print("UPDATED ENDPOINT '{}': {}".format(endpoint_name, req.status_code))
+            print(("UPDATED ENDPOINT '{}': {}".format(endpoint_name, req.status_code)))
             return True
         else:
             res = json.loads(req.text)
-            print("FAILURE {}: {} - {}".format(req.status_code, res["error"]["code"], res["error"]["message"]))
+            print(("FAILURE {}: {} - {}".format(req.status_code, res["error"]["code"], res["error"]["message"])))
             raise requests.HTTPError(req.status_code)
     except requests.RequestException as error:
         print(error)
